@@ -1,5 +1,7 @@
 # TibaSasa
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e69fb0d6112b4d12a03043c680e25c3c)](https://app.codacy.com/gh/BuildForSDGCohort2/tibasasa?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDGCohort2/tibasasa&utm_campaign=Badge_Grade_Dashboard)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
