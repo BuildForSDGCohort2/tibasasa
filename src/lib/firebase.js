@@ -19,7 +19,12 @@ class Firebase {
     firebase.initializeApp(firebaseConfig);
     this.auth = firebase.auth();
     this.firestore = firebase.firestore();
+    this.db = firebase.database;
   }
+
+  newAuth(email, password) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  } 
 
   login(email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);

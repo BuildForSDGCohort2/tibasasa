@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const NewUser = () => {
   const classes = useStyles();
 
   const history = useHistory();
@@ -51,12 +51,12 @@ const Login = () => {
 
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const signIn = async () => {
+  const signUp = async () => {
     try {
-      await firebase.login(email, password);
-      history.replace("/");
+      await firebase.newAuth(email, password);
+      history.replace("/userinfo");
       setSnackbar({
-        message: "Signed in successfully!",
+        message: "Signed up successfully!",
         open: true,
         color: "success",
       });
@@ -64,13 +64,17 @@ const Login = () => {
       let errorCode = error.code;
       let errorMessage = error.message;
       switch (errorCode) {
-        case "auth/user-not-found":
-          setError("The email address doesn't live here");
+        case "auth/email-already-in-use":
+          setError("The email address is in use");
           setEmailError(true);
           break;
-        case "auth/wrong-password":
-          setError("The password you provided is wrong");
+        case "auth/weak-password":
+          setError("The password you provided is weak");
           setPasswordError(true);
+          break;
+        case "auth/invalid-email":
+          setError("The email address is invalid");
+          setEmailError(true);
           break;
         default:
           setError(errorMessage);
@@ -98,7 +102,7 @@ const Login = () => {
             <LockOutlined />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Log in
+            Sign Up
           </Typography>
           <form
             className={classes.form}
@@ -152,11 +156,11 @@ const Login = () => {
               color="secondary"
               className={classes.submit}
               type="submit"
-              onClick={signIn}
+              onClick={signUp}
             >
               Sign In
             </Button>
-            <p>Don't have an account?<a href="/newuser">Sign Up</a></p>
+            <p>Already have an account?<a href="/login">login</a></p>
             {/*
             <!-- 
             <Grid container>
@@ -175,4 +179,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default NewUser;

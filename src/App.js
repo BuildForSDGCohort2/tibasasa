@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import Login from "./components/Login";
+import NewUser from "./components/NewUser";
+import userinfo from "./components/PatientInfo"
 import DashBase from "./components/DashBase";
 import Loader from "./components/Loader";
 import { ThemeProvider } from "@material-ui/styles";
@@ -96,7 +98,9 @@ const App = () => {
       <SnackbarContext.Provider value={snackbar}>
         <Router>
           <Switch>
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login"   component={Login} />
+            <Route exact path="/newuser" component={NewUser} />
+            <Route exact path="/userinfo" component={userinfo} />
             <Route path="/">
               <DashBase />
             </Route>

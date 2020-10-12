@@ -137,7 +137,7 @@ const Navbar = (props) => {
             >
               <MenuItem>
                 <Link
-                  to="/account"
+                  to="/userinfo"
                   style={{ color: "unset", textDecoration: "none" }}
                 >
                   Profile
